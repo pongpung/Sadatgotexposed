@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainbow Celebration Button</title>
+    <style>
+        /* General page styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        .rainbow-button {
+            padding: 20px 40px;
+            font-size: 24px;
+            color: white;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 300%;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background-position 0.5s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: rainbowMove 3s infinite linear;
+        }
+
+        .rainbow-button:hover {
+            background-position: 100%;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .celebration-container {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            margin-top: 20px;
+        }
+
+        .emoji {
+            font-size: 40px;
+            opacity: 0;
+            animation: popUp 0.7s forwards ease;
+        }
+
+        /* Keyframes for the moving rainbow gradient */
+        @keyframes rainbowMove {
+            0% { background-position: 0%; }
+            100% { background-position: 200%; }
+        }
+
+        /* Emoji pop-up effect */
+        @keyframes popUp {
+            0% { transform: scale(0.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Message styling */
+        .message {
+            font-size: 28px;
+            color: #333;
+            opacity: 0;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            margin-top: 10px;
+        }
+
+        .message.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Profile image styling */
+        .profile-image {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            width: 100%; /* Adjust to screen width */
+            max-width: 500px; /* Maximum width of the image */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 50%; /* Make it circular */
+            border: 5px solid #fff; /* White border */
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Shadow for effect */
+            object-fit: cover; /* Cover the area while maintaining aspect ratio */
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <img src="https://scontent.fdac24-3.fna.fbcdn.net/v/t39.30808-1/454203719_1173205027264636_5765811960498749990_n.jpg?stp=cp6_dst-jpg_s200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeFfi0OWA91Qt26kZEOS-EYwOBWYkxIM9C44FZiTEgz0LgVHur8ahKgg-ivQjjuKW9dIyLOwiK4m-euYePN4YXQu&_nc_ohc=g5CITz-iXrMQ7kNvgGWjj68&_nc_zt=24&_nc_ht=scontent.fdac24-3.fna&_nc_gid=AXh0CfaNrCzfK4ZGIky4nvk&oh=00_AYCeaku51JIJaPwVWA_NSOykHUEr59SifNQFWULOTT6IfA&oe=672FFC38" alt="Profile Photo" class="profile-image" id="profileImage"> <!-- Update the image URL -->
+    <button class="rainbow-button" id="rainbowButton" onclick="celebrate()">press! 🌈</button>
+    <div class="celebration-container" id="celebrationContainer">
+        <span class="emoji">🏳️‍🌈</span>
+        <span class="emoji">❤️</span>
+        <span class="emoji">🧡</span>
+        <span class="emoji">💛</span>
+        <span class="emoji">💚</span>
+        <span class="emoji">💙</span>
+        <span class="emoji">💜</span>
+        
+        <div class="message" id="congratsMessage">Sadat is GAYYY! 🌈</div>
+    
+    </div>
+</div>
+
+<script>
+    function celebrate() {
+        const celebrationContainer = document.getElementById('celebrationContainer');
+        const message = document.getElementById('congratsMessage');
+        const button = document.getElementById('rainbowButton');
+        const profileImage = document.getElementById('profileImage');
+
+        // Change the background color to a subtle rainbow theme
+        document.body.style.backgroundColor = "#ffe6f9";
+
+        // Display emojis and animate them
+        celebrationContainer.style.opacity = '1';
+        const emojis = celebrationContainer.querySelectorAll('.emoji');
+        emojis.forEach((emoji, index) => {
+            emoji.style.animationDelay = `${index * 0.15}s`;  // Stagger animations
+        });
+
+        // Display and animate message
+        setTimeout(() => {
+            message.classList.add('show');
+        }, 500);
+
+        // Make the button disappear
+        button.style.display = 'none';
+
+        // Show the profile image
+        profileImage.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
