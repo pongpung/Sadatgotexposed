@@ -75,6 +75,11 @@
             opacity: 0;
             transition: opacity 0.5s ease, transform 0.5s ease;
             margin-top: 10px;
+            padding: 10px;
+            border: 2px solid #333; /* Border around the message */
+            background-color: white; /* Background color for the message */
+            border-radius: 8px; /* Rounded corners */
+            display: inline-block; /* Make sure the background is wrapped around the text */
         }
 
         .message.show {
@@ -109,6 +114,7 @@
         <span class="emoji">💚</span>
         <span class="emoji">💙</span>
         <span class="emoji">💜</span>
+        <br>
         
         <div class="message" id="congratsMessage">Sadat is GAYYY! 🌈</div>
     
