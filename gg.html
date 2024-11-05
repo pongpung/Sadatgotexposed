@@ -12,14 +12,23 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #f0f8ff;
+            background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+            background-size: 400%; /* To create a nice transition effect */
             font-family: Arial, sans-serif;
             overflow: hidden;
-            transition: background-color 0.5s ease;
+            animation: gradientAnimation 10s ease infinite; /* Animate background */
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0%; }
+            50% { background-position: 100%; }
+            100% { background-position: 0%; }
         }
 
         .container {
             text-align: center;
+            position: relative;
+            z-index: 1; /* Ensure content is above the background */
         }
 
         .rainbow-button {
@@ -51,12 +60,6 @@
             font-size: 40px;
             opacity: 0;
             animation: popUp 0.7s forwards ease;
-        }
-
-        /* Keyframes for the moving rainbow gradient */
-        @keyframes rainbowMove {
-            0% { background-position: 0%; }
-            100% { background-position: 200%; }
         }
 
         /* Emoji pop-up effect */
@@ -95,10 +98,9 @@
 </head>
 <body>
 
-
 <div class="container">
     <img src="https://scontent.fdac24-3.fna.fbcdn.net/v/t39.30808-1/454203719_1173205027264636_5765811960498749990_n.jpg?stp=cp6_dst-jpg_s200x200&_nc_cat=106&ccb=1-7&_nc_sid=0ecb9b&_nc_eui2=AeFfi0OWA91Qt26kZEOS-EYwOBWYkxIM9C44FZiTEgz0LgVHur8ahKgg-ivQjjuKW9dIyLOwiK4m-euYePN4YXQu&_nc_ohc=g5CITz-iXrMQ7kNvgGWjj68&_nc_zt=24&_nc_ht=scontent.fdac24-3.fna&_nc_gid=AXh0CfaNrCzfK4ZGIky4nvk&oh=00_AYCeaku51JIJaPwVWA_NSOykHUEr59SifNQFWULOTT6IfA&oe=672FFC38" alt="Profile Photo" class="profile-image" id="profileImage"> <!-- Update the image URL -->
-    <button class="rainbow-button" id="rainbowButton" onclick="celebrate()">press! 🌈</button>
+    <button class="rainbow-button" id="rainbowButton" onclick="celebrate()">Press! 🌈</button>
     <div class="celebration-container" id="celebrationContainer">
         <span class="emoji">🏳️‍🌈</span>
         <span class="emoji">❤️</span>
@@ -120,8 +122,11 @@
         const button = document.getElementById('rainbowButton');
         const profileImage = document.getElementById('profileImage');
 
-        // Change the background color to a subtle rainbow theme
-        document.body.style.backgroundColor = "#ffe6f9";
+        // Change the body's background to a rainbow gradient transition
+        document.body.style.animation = 'none'; // Reset animation
+        document.body.style.background = 'linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet)'; // Set new gradient
+        document.body.style.backgroundSize = '400%'; // Adjust background size for animation
+        document.body.style.animation = 'gradientAnimation 10s ease infinite'; // Reapply animation
 
         // Display emojis and animate them
         celebrationContainer.style.opacity = '1';
